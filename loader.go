@@ -69,8 +69,8 @@ func (t *TemplateLoader) Merge(mainTmpl string, otherTemplates []string) (string
 	}
 
 	includes := append(otherTemplates, specificIncludes...)
-	files := append(includes, layoutTemplates...)
-	return viewKey, append(files, mainTmpl)
+	files := append([]string{mainTmpl}, includes...)
+	return viewKey, append(layoutTemplates, files...)
 }
 
 // LoadViews ...

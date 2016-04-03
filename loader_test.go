@@ -64,7 +64,8 @@ func TestLoadTemplatesAlternativeExtension(t *testing.T) {
 }
 
 func TestMergeTemplates(t *testing.T) {
-	expected := []string{"testdata/includes/sidebar.tmpl", "testdata/layouts/base.html", "testdata/views/index.tmpl"}
+	sheet.TemplateExtension = ".tmpl"
+	expected := []string{"testdata/layouts/base.tmpl", "testdata/views/index.tmpl", "testdata/includes/sidebar.tmpl"}
 	expectedViewKey := "index.tmpl"
 
 	loader := sheet.NewTemplateLoader("views", "layouts", "includes")
@@ -97,7 +98,7 @@ func TestLoadViewTemplates(t *testing.T) {
 	sheet.TemplatePath = "testdata"
 	loader := sheet.NewTemplateLoader("views", "layouts", "includes")
 
-	expected := []string{"testdata/views/index.html", "testdata/views/page/sample.html"}
+	expected := []string{"testdata/views/index.tmpl", "testdata/views/page/sample.tmpl"}
 	views := loader.LoadViews()
 
 	t.Log(views)
@@ -119,7 +120,7 @@ func TestLoadIncludeTemplates(t *testing.T) {
 	sheet.TemplatePath = "testdata"
 	loader := sheet.NewTemplateLoader("views", "layouts", "includes")
 
-	expected := []string{"testdata/includes/sidebar.html"}
+	expected := []string{"testdata/includes/sidebar.tmpl"}
 	includes := loader.LoadIncludes()
 
 	t.Log(includes)
