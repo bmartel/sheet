@@ -1,0 +1,10 @@
+{{define "product_collection"}}
+<ul>
+  {{range .}}
+    <li>
+      <h4>{{.Name}}</h4>
+      <p>${{.Price}}</p>
+    </li>
+  {{end}}
+</ul>
+{{end}}

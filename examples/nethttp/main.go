@@ -19,6 +19,7 @@ func main() {
 
 	http.HandleFunc("/", handler.index)
 	http.HandleFunc("/about", handler.about)
+	http.HandleFunc("/sample", handler.sample)
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -32,7 +33,7 @@ func (h *handler) index(w http.ResponseWriter, r *http.Request) {
 		"title": "Example Index",
 	}
 
-	h.views.Render(w, "index.html", data)
+	h.views.HTML(w, "index.html", data)
 }
 
 func (h *handler) about(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +46,44 @@ func (h *handler) about(w http.ResponseWriter, r *http.Request) {
 		"title": "About Page",
 	}
 
-	h.views.Render(w, "about.html", data)
+	h.views.HTML(w, "about.html", data)
+}
+
+// Product example
+type Product struct {
+	Name  string
+	Price int64
+}
+
+func (h *handler) sample(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/sample" {
+		h.notfound(w, r)
+		return
+	}
+
+	data := map[string]interface{}{
+		"title": "This is a sample product list",
+		"products": []Product{
+			{
+				Name:  "Stuff",
+				Price: 1234,
+			},
+			{
+				Name:  "Things",
+				Price: 4567,
+			},
+			{
+				Name:  "Doodads",
+				Price: 8912,
+			},
+			{
+				Name:  "Test",
+				Price: 170,
+			},
+		},
+	}
+
+	h.views.HTML(w, "product/list.html", data)
 }
 
 func (h *handler) notfound(w http.ResponseWriter, r *http.Request) {

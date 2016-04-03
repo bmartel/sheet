@@ -3,6 +3,7 @@ package sheet
 import (
 	"fmt"
 	"html/template"
+	"io"
 	"net/http"
 
 	"github.com/oxtoacart/bpool"
@@ -46,8 +47,15 @@ type ViewCollection struct {
 	templates map[string]*template.Template
 }
 
+// HTML render the template with content type header set
+func (v *ViewCollection) HTML(w http.ResponseWriter, name string, data interface{}) error {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
+	return v.Render(w, name, data)
+}
+
 // Render out the given template with data
-func (v *ViewCollection) Render(w http.ResponseWriter, name string, data map[string]interface{}) error {
+func (v *ViewCollection) Render(w io.Writer, name string, data interface{}) error {
 	tmpl, ok := v.templates[name]
 	if !ok {
 		return fmt.Errorf("The template %s does not exist.", name)
@@ -65,8 +73,7 @@ func (v *ViewCollection) Render(w http.ResponseWriter, name string, data map[str
 		return err
 	}
 
-	// Write the buffered output to the http.ResponseWriter
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	// Write the buffered output to the io.Writer
 	buf.WriteTo(w)
 
 	return nil
