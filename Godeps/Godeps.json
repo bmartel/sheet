@@ -1,0 +1,10 @@
+{
+	"ImportPath": "github.com/bmartel/sheet",
+	"GoVersion": "go1.6",
+	"Deps": [
+		{
+			"ImportPath": "github.com/mattn/go-zglob",
+			"Rev": "249e8bceca8cd265110a08bbb63303fb9db47445"
+		}
+	]
+}
