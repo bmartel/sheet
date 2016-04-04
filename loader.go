@@ -13,7 +13,7 @@ func NewTemplateLoader(viewPath string, layoutPath string, includePath string) *
 	viewTmplPath := getTemplatePath(viewPath)
 	includeTmplPath := getTemplatePath(includePath)
 	layoutTmplPath := getTemplatePath(layoutPath)
-	defaultLayout := layoutTmplPath + "/" + TemplateBaseLayout + TemplateExtension
+	defaultLayout := layoutTmplPath + "/" + DefaultLayout + TemplateExtension
 
 	return &TemplateLoader{
 		viewPath:      viewTmplPath,

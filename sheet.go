@@ -19,8 +19,8 @@ var TemplateExtension = ".tmpl"
 // TemplatePath is the default root level project folder to look for view templates
 var TemplatePath = "templates"
 
-// TemplateBaseLayout is the default layout file which will be used for view templates
-var TemplateBaseLayout = "base"
+// DefaultLayout is the default layout file which will be used for view templates
+var DefaultLayout = "base"
 
 var pool *bpool.BufferPool
 
