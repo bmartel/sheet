@@ -88,13 +88,13 @@ Example:
 Compiling this file structure, the following will be cached for use
 
 
-`key => value`
+`key` => `value`
 
-- `'about.tmpl' => template parsed using ['layouts/base.tmpl', 'views/about.tmpl', 'includes/sidebar.tmpl']`
+- `'about.tmpl' ` => template parsed using `['layouts/base.tmpl', 'views/about.tmpl', 'includes/sidebar.tmpl']`
 
-- `'index.tmpl' => template parsed using ['layouts/base.tmpl', 'views/index.tmpl', 'includes/sidebar.tmpl']`
+- `'index.tmpl' ` => template parsed using `['layouts/base.tmpl', 'views/index.tmpl', 'includes/sidebar.tmpl']`
 
-- `'product/list.tmpl' => template parsed using ['layouts/product.tmpl', 'views/product/list.tmpl', 'includes/sidebar.tmpl',
+- `'product/list.tmpl' ` => template parsed using `['layouts/product.tmpl', 'views/product/list.tmpl', 'includes/sidebar.tmpl',
  'includes/product/card.tmpl']`
 
 
